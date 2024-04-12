@@ -9,11 +9,11 @@ type Tty2Web struct {
 	options []option
 	binary  string
 	process *exec.Cmd
-	command string
+	command []string
 }
 
-func NewTty2Web(command string, options ...option) *Tty2Web {
-	return &Tty2Web{options: options, binary: "tty2web", command: command}
+func NewTty2Web(command ...string) *Tty2Web {
+	return &Tty2Web{options: []option{}, binary: "tty2web", command: command}
 }
 
 func (t *Tty2Web) AddOptions(option ...option) {
@@ -37,12 +37,12 @@ func (t *Tty2Web) buildCommand() []string {
 			command = append(command, "--"+arg.name)
 		}
 	}
-	command = append(command, t.command)
+	command = append(command, t.command...)
 	return command
 }
 
 func (t *Tty2Web) Run() error {
-	t.process = exec.Command(t.command, t.buildCommand()...)
+	t.process = exec.Command(t.binary, t.buildCommand()...)
 	err := t.process.Run()
 	if err != nil {
 		return err
