@@ -1,4 +1,4 @@
-package tty2web
+package libtty2web
 
 import (
 	"os/exec"

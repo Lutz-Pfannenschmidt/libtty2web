@@ -1,4 +1,4 @@
-package tty2web_test
+package libtty2web_test
 
 import (
 	"testing"

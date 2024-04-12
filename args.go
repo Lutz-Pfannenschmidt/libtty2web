@@ -1,4 +1,4 @@
-package tty2web
+package libtty2web
 
 type option struct {
 	name     string
