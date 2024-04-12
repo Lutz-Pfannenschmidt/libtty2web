@@ -65,6 +65,6 @@ func TestCommandBuilder(t *testing.T) {
 	cmd := test.GetCommand()
 	expected := "custom-binary --address 1.2.3.4 --port 8080 --permit-write --credential user:pass --random-url --enable-webgl --all --api --sc --regeorg --random-url-length 16 --url url --jsurl jsurl --download download --upload upload --tls --tls-cert cert --tls-key key --tls-ca-crt ca --index index --title-format format --dns dns --dnslisten dnslisten --listen listen --agenttls --listencert cert --forward server --password password --connect connect --proxy proxy --proxyauth proxyauth --reconnect-time 10 --max-connection 0 --once --timeout 10 --permit-arguments --width 800 --height 600 --ws-origin origin --terminal terminal --close-signal signal --close-timeout 10 --config config some-command"
 	if cmd != expected {
-		t.Errorf("Expected command: %s, got: %s", expected, cmd)
+		t.Errorf("Expected command: %s,\ngot: %s", expected, cmd)
 	}
 }

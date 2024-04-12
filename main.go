@@ -2,6 +2,7 @@ package libtty2web
 
 import (
 	"os/exec"
+	"strings"
 )
 
 type Tty2Web struct {
@@ -24,23 +25,24 @@ func (t *Tty2Web) SetBinary(binary string) {
 }
 
 func (t *Tty2Web) GetCommand() string {
-	return t.buildCommand()
+	return t.binary + " " + strings.Join(t.buildCommand(), " ")
 }
 
-func (t *Tty2Web) buildCommand() string {
-	command := t.binary
+func (t *Tty2Web) buildCommand() []string {
+	command := []string{}
 	for _, arg := range t.options {
 		if arg.hasValue {
-			command += " --" + arg.name + " " + arg.value
+			command = append(command, "--"+arg.name, arg.value)
 		} else {
-			command += " --" + arg.name
+			command = append(command, "--"+arg.name)
 		}
 	}
-	return command + " " + t.command
+	command = append(command, t.command)
+	return command
 }
 
 func (t *Tty2Web) Run() error {
-	t.process = exec.Command(t.buildCommand())
+	t.process = exec.Command(t.command, t.buildCommand()...)
 	err := t.process.Run()
 	if err != nil {
 		return err
