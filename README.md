@@ -14,6 +14,17 @@ Every tty2web option is available as a function in the libtty2web package using 
 
 to see all features and options of tty2web, please visit the [tty2web](https://github.com/kost/tty2web) repository, run `tty2web --help` or use the `GetHelpMsg()` function from go.
 
+For example, `tty2web --help` will output:
+```
+...
+--jsurl value    Specify string for custom URL serving Javascript files...
+...
+```
+
+To use this option in libtty2web, you can use the `libtty2web.WithJsUrl("someDir")` function.
+
+## Example
+
 ```go
 package main
 
