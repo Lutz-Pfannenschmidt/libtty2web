@@ -5,6 +5,7 @@ import (
 	"os/exec"
 )
 
+// GetHelpMsg returns the help message of the binary
 func GetHelpMsg(binary string) (string, error) {
 
 	cmd := exec.Command(binary, "--help")
@@ -21,6 +22,7 @@ func GetHelpMsg(binary string) (string, error) {
 	return out.String(), nil
 }
 
+// GetVersion returns the version of the binary
 func GetVersion(binary string) (string, error) {
 
 	cmd := exec.Command(binary, "--version")
