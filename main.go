@@ -6,10 +6,10 @@ import (
 )
 
 type Tty2Web struct {
-	options []option
-	binary  string
-	process *exec.Cmd
-	command []string
+	options []option  // options to be passed to the binary
+	binary  string    // binary to be executed
+	process *exec.Cmd // process to be executed
+	command []string  // command to be executed
 }
 
 // NewTty2Web creates a new Tty2Web instance with the given command
